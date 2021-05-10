@@ -1,4 +1,4 @@
-package com.zhs.zbhuang;
+package com.zhs.zbhuang.subject;
 
 /**
  * 维护两个链表，老链表的头节点往老链表的尾节点移动

@@ -1,4 +1,4 @@
-package com.zhs.zbhuang;
+package com.zhs.zbhuang.basic;
 
 import java.util.Arrays;
 

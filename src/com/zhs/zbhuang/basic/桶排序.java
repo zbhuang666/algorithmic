@@ -1,4 +1,6 @@
-package com.zhs.zbhuang;
+package com.zhs.zbhuang.basic;
+
+import com.zhs.zbhuang.basic.插入排序;
 
 import java.util.Arrays;
 

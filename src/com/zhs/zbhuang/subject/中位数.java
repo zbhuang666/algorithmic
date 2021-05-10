@@ -1,4 +1,4 @@
-package com.zhs.zbhuang;
+package com.zhs.zbhuang.subject;
 
 public class 中位数 {
     public static double findMedianSortedArrays(int[] nums1, int[] nums2) {

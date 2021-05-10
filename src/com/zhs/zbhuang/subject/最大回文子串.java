@@ -1,4 +1,4 @@
-package com.zhs.zbhuang;
+package com.zhs.zbhuang.subject;
 
 public class 最大回文子串 {
 
