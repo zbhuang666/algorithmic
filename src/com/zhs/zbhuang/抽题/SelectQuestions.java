@@ -76,7 +76,7 @@ public class SelectQuestions {
      * @param k 选取的元素个数
      * @param questionList 数组
      */
-    public static void arrangement(int k,List<Question> questionList, List<List<Question>> resultList){
+    public static void selectQuestions(int k,List<Question> questionList, List<List<Question>> resultList){
         if(k == 1){
             for (int i = 0; i < questionList.size(); i++) {
                 store.add(questionList.get(i));
@@ -87,7 +87,7 @@ public class SelectQuestions {
         }else if(k > 1){
             for (int i = 0; i < questionList.size(); i++) { //按顺序挑选一个元素
                 store.add(questionList.get(i)); //添加选到的元素
-                arrangement(k - 1, removeArrayElements(questionList, questionList.get(i)), resultList); //没有取过的元素，继续挑选
+                selectQuestions(k - 1, filterElements(questionList, questionList.get(i)), resultList); //没有取过的元素，继续挑选
                 store.remove(questionList.get(i));
             }
         }
@@ -99,14 +99,14 @@ public class SelectQuestions {
      * @param question 待移除的元素
      * @return 剩余元素组成的新数组
      */
-    public static List<Question> removeArrayElements(List<Question> questionList, Question question){
+    public static List<Question> filterElements(List<Question> questionList, Question question){
         return questionList.stream().filter(q -> q.getQuestionId() != question.getQuestionId()).collect(Collectors.toList());
     }
 
     public static void main(String[] args) {
         System.out.println("组合结果：");
         List<List<Question>> resultList = new ArrayList<>();
-        arrangement(11, questionList, resultList);
+        selectQuestions(3, questionList, resultList);
         resultList.stream().forEach(r -> System.out.println(r));
         System.out.println(resultList.size());
     }

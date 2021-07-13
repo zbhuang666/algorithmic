@@ -44,4 +44,14 @@ public class Question {
     public void setQuestionDifficulty(Integer questionDifficulty) {
         this.questionDifficulty = questionDifficulty;
     }
+
+    @Override
+    public String toString() {
+        return "Question{" +
+                "questionId=" + questionId +
+                ", questionKnowledge='" + questionKnowledge + '\'' +
+                ", questionType=" + questionType +
+                ", questionDifficulty=" + questionDifficulty +
+                '}';
+    }
 }
