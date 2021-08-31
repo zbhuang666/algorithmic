@@ -4,16 +4,30 @@ package com.zhs.zbhuang.subject;
  * 维护两个链表，老链表的头节点往老链表的尾节点移动
  */
 public class 单链表反转 {
-    public static void main(String[] args) {
-        class Node {
-            String name;
-            Node next;
-            public Node(String name, Node node) {
-                super();
-                this.name = name;
-                this.next = node;
-            }
+    static class Node {
+        String name;
+        Node next;
+        public Node(String name, Node node) {
+            super();
+            this.name = name;
+            this.next = node;
         }
+    }
+
+    public static Node revertNode(Node head) {
+        Node pre = null;
+        Node next = head.next;
+        while(next != null) {
+            head.next = pre;
+            pre = head;
+            head = next;
+            next = next.next;
+        }
+        head.next = pre;
+        return head;
+    }
+
+    public static void main(String[] args) {
 
         Node e = new Node("e",null);
         Node d = new Node("d", e);
@@ -22,22 +36,11 @@ public class 单链表反转 {
         Node a = new Node("a", b);
 
         //关键代码开始
-        Node pre = null;
-        Node head = a;
-        Node next = head.next;
+        Node head = revertNode(a);
 
-        while(next != null){
-            head.next = pre;
-            pre = head;
-            head = next;
-            next = next.next;
-        }
-        head.next = pre;
-
-        while(head != next){
+        while(head != null){
             System.out.print(head.name + (head.next == null ? "" : "->"));
             head = head.next;
-
         }
     }
 }
