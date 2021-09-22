@@ -1,6 +1,7 @@
 package com.zhs.zbhuang.basic;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 public class 插入排序 {
     public static int[] insertionSort(int[] arr) {
@@ -22,5 +23,6 @@ public class 插入排序 {
         int[] a = new int[]{10,28,1,3,27,18,81,4,39,85,72};
         int[] b = insertionSort(a);
         System.out.println(Arrays.toString(b));
+        Arrays.sort(b);
     }
 }

@@ -2,6 +2,9 @@ package com.zhs.zbhuang.basic;
 
 import java.util.Arrays;
 
+/**
+ * 按照步长插入排序
+ */
 public class 希尔排序 {
     public static int[] shellSort(int arr[]){
         int len = arr.length;

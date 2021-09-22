@@ -2,6 +2,9 @@ package com.zhs.zbhuang.basic;
 
 import java.util.Arrays;
 
+/**
+ * 局部有序到整体有序
+ */
 public class 归并排序 {
     public static int[] mergeSort(int[] a,int low,int high){
         int mid = (low+high)/2;
