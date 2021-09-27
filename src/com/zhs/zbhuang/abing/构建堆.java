@@ -82,7 +82,7 @@ public class 构建堆 {
         int[] nums = new int[]{70,45,40,20,25,35,30,10,15};
         buildHeap(nums);
         int[] nums1 = new int[]{9,18,15,25,50,30,35,34,45};
-        buildHeap1(nums);
+        buildHeap1(nums1);
         System.out.println(Arrays.toString(nums));
         System.out.println(Arrays.toString(nums1));
     }
