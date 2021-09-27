@@ -1,5 +1,8 @@
 package com.zhs.zbhuang.abing;
 
+/**
+ * 1...n的和
+ */
 public class 简单的题目 {
     static int sum(int n) {
         boolean b = n > 0 && ((n += sum(n - 1)) > 0);
