@@ -2,6 +2,10 @@ package com.zhs.zbhuang.abing;
 
 import java.util.Arrays;
 
+/**
+ * 最小的k个数
+ * 最小的k个数：输入整数数组 arr ，找出其中最小的 k 个数。例如，输入4、5、1、6、2、7、3、8这8个数字，则最小的4个数字是1、2、3、4。
+ */
 public class 构建堆 {
 
     //建堆。对于一个还没维护过的堆，从他的最后一个节点的父节点开始进行调整。
@@ -78,11 +82,37 @@ public class 构建堆 {
         nums[i] = nums[i] + nums[j] - (nums[j] = nums[i]);
     }
 
+    public static int[] getLeastNumbers(int[] arr, int k) {
+        if (k == 0)
+            return new int[0];
+        int len = arr.length;
+        if (k == len)
+            return arr;
+
+        //对arr数组的前k个数建堆
+        int[] heap = new int[k];
+        System.arraycopy(arr, 0, heap, 0, k);
+        buildHeap(heap);
+
+        //对后面较小的树建堆
+        for (int i = k; i < len; i++) {
+            if (arr[i] < heap[0]) {
+                heap[0] = arr[i];
+                heapify(heap, 0);
+            }
+        }
+        //返回这个堆
+        return heap;
+    }
+
+
     public static void main(String[] args) {
-        int[] nums = new int[]{70,45,40,20,25,35,30,10,15};
+        int[] nums = new int[]{70, 45, 40, 20, 25, 35, 30, 10, 15};
         buildHeap(nums);
-        int[] nums1 = new int[]{9,18,15,25,50,30,35,34,45};
+        int[] nums1 = new int[]{9, 18, 15, 25, 50, 30, 35, 34, 45};
         buildHeap1(nums1);
+        int[] leastNumbers = getLeastNumbers(nums, 5);
+        System.out.println(Arrays.toString(leastNumbers));
         System.out.println(Arrays.toString(nums));
         System.out.println(Arrays.toString(nums1));
     }
