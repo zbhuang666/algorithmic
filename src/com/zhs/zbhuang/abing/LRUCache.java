@@ -69,7 +69,7 @@ public class LRUCache {
             ++size;
             if(size > capacity) {
                 LinkedNode tail = popTail();
-                cache.remove(tail.key);
+                removeNode(tail);
                 --size;
             }
         } else {

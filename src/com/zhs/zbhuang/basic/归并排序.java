@@ -17,32 +17,32 @@ public class 归并排序 {
         return a;
     }
 
-    public static void merge(int[] a, int low, int mid, int high) {
-        int[] temp = new int[high-low+1];
-        int i= low;
-        int j = mid+1;
-        int k=0;
-        // 把较小的数先移到新数组中
-        while(i<=mid && j<=high){
-            if(a[i]<a[j]){
-                temp[k++] = a[i++];
-            }else{
-                temp[k++] = a[j++];
+    public static void merge(int[] nums, int lo, int mid, int hi) {
+        int[] temp = new int[nums.length];
+        // 先把 nums[lo..hi] 复制到辅助数组中
+        // 以便合并后的结果能够直接存入 nums
+        for (int i = lo; i <= hi; i++) {
+            temp[i] = nums[i];
+        }
+
+        // 数组双指针技巧，合并两个有序数组
+        int i = lo, j = mid + 1;
+        for (int p = lo; p <= hi; p++) {
+            if (i == mid + 1) {
+                // 左半边数组已全部被合并
+                nums[p] = temp[j++];
+            } else if (j == hi + 1) {
+                // 右半边数组已全部被合并
+                nums[p] = temp[i++];
+            } else if (temp[i] > temp[j]) {
+                nums[p] = temp[j++];
+            } else {
+                nums[p] = temp[i++];
             }
         }
-        // 把左边剩余的数移入数组
-        while(i<=mid){
-            temp[k++] = a[i++];
-        }
-        // 把右边边剩余的数移入数组
-        while(j<=high){
-            temp[k++] = a[j++];
-        }
-        // 把新数组中的数覆盖nums数组
-        for(int x=0;x<temp.length;x++){
-            a[x+low] = temp[x];
-        }
     }
+
+
 
     public static void main(String[] args) {
         int[] a = new int[]{10,28,1,3,27,18,81,4,39,85,72};

@@ -28,8 +28,11 @@ public class 快速排序 {
                 arr[j] = arr[i];
                 arr[i] = t;
             }
-
         }
+        System.out.println(temp);
+        System.out.println(Arrays.toString(arr));
+        System.out.println(low);
+        System.out.println(high);
         //最后将基准为与i和j相等位置的数字交换
         arr[low] = arr[i];
         arr[i] = temp;
@@ -39,9 +42,38 @@ public class 快速排序 {
         quickSort(arr, j+1, high);
         return arr;
     }
+
+    public static int[] quickSort1(int[] arr,int low,int high){
+        int i,j,temp,t;
+        if(low > high) {
+            return arr;
+        }
+        i = low;
+        j = high;
+        temp = arr[low];
+        while (i < j) {
+            while (temp <= arr[j] && i<j) {
+                j--;
+            }
+            while (temp >= arr[i] && i<j) {
+                i++;
+            }
+            if(i<j) {
+                t=arr[i];
+                arr[i]=arr[j];
+                arr[j] = t;
+            }
+        }
+        arr[low] = arr[i];
+        arr[i] = temp;
+        quickSort1(arr, low, j-1);
+        quickSort1(arr, j+1, high);
+        return arr;
+    }
+
     public static void main(String[] args) {
-        int[] a = new int[]{10,28,1,3,27,18,81,4,39,85,72};
-        int[] b = quickSort(a, 0, a.length - 1);
+        int[] a = new int[]{3, 44, 38, 5, 47, 15, 36, 26, 27, 2, 46, 4, 19, 50, 48};
+        int[] b = quickSort1(a, 0, a.length - 1);
         System.out.println(Arrays.toString(b));
     }
 
